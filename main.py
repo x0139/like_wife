@@ -7,6 +7,8 @@ from settings import USERNAME, PASSWORD, WIFE_ACCOUNT, COMMENTS_FILE
 
 LAST_POSTS_COUNT = 10
 
+SLEEP_TIMEOUT = 30 * 60  # half hour
+
 
 def like_and_comment_my_wife(username: str, password: str, user_id: str, comment: str, last_commented: list) -> list:
     bot = Bot()
@@ -40,4 +42,4 @@ if __name__ == '__main__':
             last_commented=last_commented_medias
         )
 
-        sleep(1800)
+        sleep(SLEEP_TIMEOUT)
