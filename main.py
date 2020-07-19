@@ -2,12 +2,16 @@ from time import sleep
 
 from instabot import Bot
 
-from settings import USERNAME, PASSWORD
+from settings import USERNAME, PASSWORD, WIFE_ACCOUNT
+
+
+def like_my_wife(username, password, user_id):
+    bot = Bot()
+    bot.login(username=username, password=password)
+    bot.like_user(user_id, filtration=False)
+
 
 if __name__ == '__main__':
-    wife_account = 'alise_artemova'
-    bot = Bot()
-    bot.login(username=USERNAME, password=PASSWORD)
     while True:
-        bot.like_user(wife_account, filtration=None)
+        like_my_wife(username=USERNAME, password=PASSWORD, user_id=WIFE_ACCOUNT)
         sleep(1800)
