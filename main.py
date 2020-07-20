@@ -3,7 +3,7 @@ from time import sleep
 
 from instabot import Bot
 
-from settings import USERNAME, PASSWORD, WIFE_ACCOUNT, COMMENTS_FILE
+from settings import USERNAME, PASSWORD, WIFE_ACCOUNT, COMMENTS
 
 LAST_POSTS_COUNT = 10
 
@@ -29,16 +29,12 @@ def like_and_comment_my_wife(username: str, password: str, user_id: str, comment
 if __name__ == '__main__':
     last_commented_medias = []
 
-    with open(COMMENTS_FILE, 'r') as f:
-        lines = [x.strip('\n') for x in f.readlines()]
-        comments = [x for x in lines if x]
-
     while True:
         last_commented_medias = like_and_comment_my_wife(
             username=USERNAME,
             password=PASSWORD,
             user_id=WIFE_ACCOUNT,
-            comment=random.choice(comments),
+            comment=random.choice(COMMENTS),
             last_commented=last_commented_medias
         )
 
