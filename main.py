@@ -10,7 +10,7 @@ LAST_POSTS_COUNT = 10
 SLEEP_TIMEOUT = 30 * 60  # half hour
 
 
-def like_and_comment_my_wife(username: str, password: str, user_id: str, comment: str, last_commented: list) -> list:
+def like_and_comment_my_wife(username: str, password: str, user_id: str, comments: list, last_commented: list) -> list:
     bot = Bot()
     bot.login(username=username, password=password)
 
@@ -20,6 +20,7 @@ def like_and_comment_my_wife(username: str, password: str, user_id: str, comment
     not_commented = set(medias) - set(last_commented)
     for media_id in not_commented:
         if not bot.is_commented(media_id):
+            comment = random.choice(comments)
             bot.comment(media_id, comment)
         last_commented.append(media_id)
 
@@ -34,7 +35,7 @@ if __name__ == '__main__':
             username=USERNAME,
             password=PASSWORD,
             user_id=WIFE_ACCOUNT,
-            comment=random.choice(COMMENTS),
+            comments=COMMENTS,
             last_commented=last_commented_medias
         )
 
