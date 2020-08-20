@@ -7,7 +7,8 @@ from settings import USERNAME, PASSWORD, WIFE_ACCOUNT, COMMENTS
 
 LAST_POSTS_COUNT = 10
 
-SLEEP_TIMEOUT = 30 * 60  # half hour
+HALF_HOUR = 30 * 60
+TWO_HOURS = 120 * 60
 
 
 def like_and_comment_my_wife(username: str, password: str, user_id: str, comments: list, last_commented: list,
@@ -43,4 +44,4 @@ if __name__ == '__main__':
             last_commented=last_commented_medias
         )
 
-        sleep(SLEEP_TIMEOUT)
+        sleep(random.randrange(HALF_HOUR, TWO_HOURS))
